@@ -32,13 +32,13 @@ app.get("/api/users/:id", (req, res, next) => {
       });
 });
 
-app.put("/api/users/:id", (req, res, next) => {
+app.put("/api/users/", (req, res, next) => {
     var data = {
         userName: req.body.userName,
         highScore: req.body.highScore
     }
-    var sql ='UPDATE users SET userName = ?, highScore = ? WHERE userId = ?'
-    var params =[data.userName, data.highScore, req.params.id]
+    var sql ='UPDATE users SET highScore = ? WHERE userName = ?'
+    var params =[data.highScore, data.userName]
     db.run(sql, params, function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
