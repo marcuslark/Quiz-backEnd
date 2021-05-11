@@ -13,14 +13,14 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         db.run(`CREATE TABLE users (
             userId INTEGER PRIMARY KEY,
             userName TEXT,
-            highScore TEXT
+            highScore INTEGER
             )`,(err) => {
         if (err) {
             // Table already created
         }else{
             // Table just created, creating some rows
             var insert = 'INSERT INTO users (userName, highScore) VALUES (?,?)'
-            db.run(insert, ["Marcus","0"])
+            db.run(insert, ["Marcus", 10])
         }
     })  
     }

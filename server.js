@@ -67,7 +67,7 @@ app.delete("/api/users/:id", (req, res, next) => {
 
 /* TEST USER DB (ADD/POST and GET */
 app.get("/api/users/", (req, res, next) => {
-    var sql = "select * from users"
+    var sql = "select * from users order by highScore desc"
     var params = []
     db.all(sql, params, (err, rows) => {
         if (err) {
